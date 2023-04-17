@@ -1,0 +1,40 @@
+## Application Configuration
+server:
+  port: 8091
+  error:
+    include-message: always
+    include-binding-errors: always
+
+# Enabling H2 Console
+spring:
+  h2:
+    console:
+      enabled: true
+
+# ========================
+# DB
+# ========================
+datasource:
+  url: jdbc:h2:mem:productDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON:EXIT=FALSE
+  driverClassName: org.h2.Driver
+  platform: h2
+  username: sa
+  password:
+
+# ========================
+# JPA / HIBERNATE
+# ========================
+
+jpa:
+  show-sql: true
+  hibernate:
+    ddl-auto: update
+  database-platform: org.hibernate.dialect.H2Dialect
+  properties:
+    hibernate:
+      show-sql: true
+      use_sql_comments: false
+      format_sql: false
+logging:
+  pattern:
+    console:  "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
